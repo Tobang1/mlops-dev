@@ -3,19 +3,26 @@ FROM alpine:latest
 RUN apk update
 RUN apk upgrade
 
-# Install java and all dependencies
+# Install java
 RUN apk add openjdk17
 
-#Testthe javac is installed
+# Install Python
+RUN apk add python3
+
+#Test the pip3 is installed
+RUN python3 --version
+
+#Test the javac is installed
 RUN java --version
 RUN javac --version
 
 WORKDIR /app
 
-COPY hello-world.java /app
+COPY . /app
 
 RUN java hello-world.java
-RUN  echo "docker build suceessfully"
+RUN python3 test.py
+RUN  echo "docker build successfully"
 # CMD [ "java", "sample"]
 
 
