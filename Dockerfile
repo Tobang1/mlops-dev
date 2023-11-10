@@ -12,7 +12,7 @@ RUN apk add python3
 #Test the pip3 is installed
 RUN python3 --version
 
-#Testthe javac is installed
+#Test the javac is installed
 RUN java --version
 RUN javac --version
 
@@ -21,7 +21,8 @@ WORKDIR /app
 COPY . /app
 
 RUN java hello-world.java
-RUN  echo "docker build suceessfully"
+RUN python3 test.py
+RUN  echo "docker build successfully"
 # CMD [ "java", "sample"]
 
 
