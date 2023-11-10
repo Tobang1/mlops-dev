@@ -4,6 +4,7 @@ RUN apk update
 RUN apk upgrade
 
 # Install java
+
 RUN apk add openjdk17
 
 # Install Python
