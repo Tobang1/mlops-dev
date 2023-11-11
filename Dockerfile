@@ -1,32 +1,19 @@
-FROM alpine:latest
+FROM node:16.15
 #update and upgrade the image
-RUN apk update
-RUN apk upgrade
-
-# Install java
-#testing conflict
-
-
-RUN apk add openjdk17
-
-# Install Python
-RUN apk add python3
-
-#Test the pip3 is installed
-RUN python3 --version
-
-#Test the javac is installed
-RUN java --version
-RUN javac --version
-
-WORKDIR /app
-
-COPY . /app
-
-RUN java hello-world.java
-RUN python3 test.py
+RUN apt update
+RUN apt upgrade -y
+WORKDIR /usr/src/app
+# copypackage.json and all .json to working directory
+COPY package*.json ./
+RUN npm install
+#Test the npm is installed
+RUN npm -v
+COPY . .
+# Build the React app
+RUN npm run build
+EXPOSE 3000
 RUN  echo "docker build successfully"
-# CMD [ "java", "sample"]
+CMD ["npm", "start"]
 
 
 
