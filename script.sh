@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+source .env
+docker ps --format "table {{.ID}}\t{{.Ports}}"
+docker build -t $IMAGE_NAME_VERSION .
+docker images ls
+# docker run -d $IMAGE_NAME_VERSION
+docker run -d -p $LOCAL_PORT:3000 $IMAGE_NAME_VERSION
+docker ps
+echo "docker-build successful"
+# push image to dockerhub
+docker tag $IMAGE_NAME_VERSION $REPOSITORY_NAME
+docker push $REPOSITORY_NAME
+echo "push successful"
