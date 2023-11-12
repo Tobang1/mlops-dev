@@ -12,7 +12,23 @@ npm  version `8.11.0` and above
   cd mlops-frontend 
   run `npm start`
 
-  then wait for the noode server to spin up and you can check it on tour local network in browser
+-Install npm and npm
+- To build an image
+docker build -t my-image-name . (example: docker build -t react-image .)
+
+- To Run the image after build
+docker run -p local-host-port:docker-container-port image-name (docker run -p 3000:3000 react-image)
+
+
+then wait for the node server to spin up and you can check it on tour local network in browser
+
+- Make sure you are in your same directory where the script file is before running the chmod command
+
+- change the permission of your script.sh using ($chmod +x script.sh)
+
+- run the script to create your container ($./script.sh)
+
+- This same script help to push to dockerhub.
 
 
 <!-- To address all issues (including breaking changes), run:
@@ -37,3 +53,7 @@ Inside that directory, you can run several commands:
     and scripts into the app directory. If you do this, you can’t go back!
 
 We suggest that you begin by typing: -->
+
+
+
+
