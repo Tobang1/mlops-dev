@@ -22,9 +22,6 @@ RUN npm -v
 # Copy the rest of the application code
 COPY . .
 
-# Build the React app
-RUN npm run build
-
 EXPOSE 3000
 
 # Print a message indicating successful build
